@@ -1,0 +1,37 @@
+import nltk
+from nltk.chat.util import Chat,reflections
+
+pairs = [
+    [
+        r"Hi|Hello|Hey there",
+        ["Hello! My name is Arpita!"]
+    ],
+    [
+        r"(.*) are you",
+        ["I am always good.What about you"]
+    ],
+    [
+        r"(.*) is your age",
+        ["I am computer dude R u seriously asking me this!!"]
+    ],
+    [
+        r"I am fine",
+        ["Good to here this"]
+    ],
+    [
+        r"(.*) created you",
+        ["I am created by Arpita this is secret"]
+    ],  
+    [
+        r"Quit",
+        ["Thank u for using mi"]
+    ] ,
+]
+
+def chat():
+    print("Hey ! I am Arpita for your service!")
+    chat=Chat(pairs)
+    chat.converse()
+if __name__=='__main__':
+    chat()
+
