@@ -1,0 +1,75 @@
+Selection SOrt :
+def selectionSort(array,size):
+    for i in range(size):
+        min_index = i
+        for j in range(i+1,size):
+            if array[j] < array[min_index]:
+                min_index = j
+
+        #Swapping
+        (array[i],array[min_index]) = (array[min_index],array[i])
+
+arr_size = int(input("Enter size of array:"))
+arr = []
+
+for i in range(arr_size):
+    user_input = int(input("Enter value:"))
+    arr.append(user_input)
+
+print("Unsorted Array: {}".format(arr))
+size = len(arr)
+
+
+selectionSort(arr,size)
+print("Sorted Array:{}".format(arr))
+
+
+Job Scheduling : 
+
+def printJobScheduling(arr, t):
+ 
+    # length of array
+    n = len(arr)
+ 
+    # Sort all jobs according to
+    # decreasing order of profit
+    for i in range(n):
+        for j in range(n - 1 - i):
+            if arr[j][2] < arr[j + 1][2]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+ 
+    # To keep track of free time slots
+    result = [False] * t    #all time slots are initially available for scheduling jobs.
+
+    # To store result (Sequence of jobs)
+    job = ['-1'] * t        #all time slots are initially empty and no jobs have been scheduled yet.
+ 
+    # Iterate through all given jobs
+    for i in range(len(arr)):
+ 
+        # Find a free slot for this job
+        # (Note that we start from the last possible slot)
+        for j in range(min(t - 1, arr[i][1] - 1), -1, -1):
+             # Free slot found
+            if result[j] is False:
+                result[j] = True
+                job[j] = arr[i][0]
+                break
+ 
+    # print the sequence
+    print(job)
+ 
+ 
+# Driver's Code
+if __name__ == '__main__':
+    arr = [['a', 2, 100],  # Job Array
+              ['b', 1, 19],
+              ['c', 2, 27],
+              ['d', 1, 25],
+              ['e', 3, 15]]
+ 
+ 
+    print("Following is maximum profit sequence of jobs")
+ 
+    # Function Call
+    printJobScheduling(arr, 3)
